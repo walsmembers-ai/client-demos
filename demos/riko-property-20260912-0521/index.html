@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riko Property — Hunian Apartemen Mewah Masa Depan di Nexus BSD</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            bg: '#060913',
+                            card: '#0b1329',
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        space: ['Space Grotesk', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #060913;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6, .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glow-cyan {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+        }
+        .glow-purple {
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.25);
+        }
+        .bg-grid {
+            background-image: radial-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #060913;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="bg-cyber-bg text-slate-100 bg-grid relative selection:bg-cyan-500 selection:text-black">
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-40 bg-cyber-bg/80 backdrop-blur-md border-b border-cyber-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center glow-cyan">
+                    <i data-lucide="hexagon" class="w-6 h-6 text-black fill-cyan-400"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold font-space tracking-wider text-white">RIKO <span class="text-cyan-400">PROPERTY</span></span>
+                    <span class="block text-[10px] text-cyan-400 tracking-widest uppercase font-mono">Nexus BSD Ecosystem</span>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#cluster" class="hover:text-cyan-400 transition-colors">Cluster Unit</a>
+                <a href="#kpr" class="hover:text-cyan-400 transition-colors">KPR Simulator</a>
+                <a href="#features" class="hover:text-cyan-400 transition-colors">Keunggulan</a>
+                <a href="#virtual-tour" class="hover:text-cyan-400 transition-colors">Virtual Tour</a>
+                <a href="#testimonials" class="hover:text-cyan-400 transition-colors">Testimoni</a>
+                <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/01234567890?text=Halo%20Riko%20Property%2C%20saya%20tertarik%20dengan%20unit%20Apartemen%20Mewah%20Nexus%20BSD." target="_blank" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-black font-space font-bold px-5 py-2.5 rounded-xl shadow-lg transition-all duration-300 glow-cyan">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    <span>Hubungi Agen</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cyber-card border-b border-cyber-border px-6 py-4 flex flex-col gap-4">
+            <a href="#cluster" class="mobile-link text-slate-300 hover:text-cyan-400">Cluster Unit</a>
+            <a href="#kpr" class="mobile-link text-slate-300 hover:text-cyan-400">KPR Simulator</a>
+            <a href="#features" class="mobile-link text-slate-300 hover:text-cyan-400">Keunggulan</a>
+            <a href="#virtual-tour" class="mobile-link text-slate-300 hover:text-cyan-400">Virtual Tour</a>
+            <a href="#testimonials" class="mobile-link text-slate-300 hover:text-cyan-400">Testimoni</a>
+            <a href="#faq" class="mobile-link text-slate-300 hover:text-cyan-400">FAQ</a>
+            <a href="https://wa.me/01234567890?text=Halo%20Riko%20Property%2C%20saya%20tertarik%20dengan%20unit%20Apartemen%20Mewah%20Nexus%20BSD." target="_blank" class="flex items-center justify-center gap-2 bg-cyan-500 text-black font-bold py-2.5 rounded-xl mt-2">
+                <i data-lucide="message-square" class="w-4 h-4"></i> Hubungi Agen
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH BADGE -->
+    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-950/60 border border-cyan-500/30 text-cyan-400 text-xs md:text-sm font-space font-medium mb-8 glow-cyan">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span>Eksklusif Peluncuran Tahap I — Nexus BSD City</span>
+                    <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+                </div>
+
+                <!-- Headline (AIDA - Attention) -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold font-space tracking-tight text-white mb-6 leading-tight">
+                    Mahakarya <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-purple-500">Apartemen Mewah</span> Masa Depan.
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-light">
+                    Solusi investasi & hunian prestisius dengan <span class="text-cyan-400 font-semibold">lokasi strategis</span> di jantung CBD Nexus BSD. Desain futuristik, keamanan biometrik 24/7, dan nilai ROI tinggi menanti Anda.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/01234567890?text=Halo%20Riko%20Property%2C%20saya%20ingin%20pesan%20Apartemen%20mewah" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-cyan-500 to-teal-400 text-black font-space font-bold px-8 py-4 rounded-xl shadow-xl hover:scale-105 transition-all duration-300 glow-cyan">
+                        <i data-lucide="whatsapp" class="w-5 h-5"></i>
+                        <span>Pesan Sekarang via WhatsApp</span>
+                    </a>
+                    <a href="#cluster" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-cyber-card border border-cyan-500/30 text-cyan-400 font-space font-semibold px-8 py-4 rounded-xl hover:bg-cyan-950/30 transition-all duration-300">
+                        <i data-lucide="scan" class="w-5 h-5"></i>
+                        <span>Scan Cluster Unit</span>
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="grid grid-cols-3 gap-4 mt-16 pt-10 border-t border-cyber-border text-left">
+                    <div class="bg-cyber-card/50 p-4 rounded-xl border border-cyber-border">
+                        <div class="text-2xl sm:text-3xl font-bold font-space text-cyan-400">99.9%</div>
+                        <div class="text-xs text-slate-400 mt-1">SLA Smart Infrastructure</div>
+                    </div>
+                    <div class="bg-cyber-card/50 p-4 rounded-xl border border-cyber-border">
+                        <div class="text-2xl sm:text-3xl font-bold font-space text-purple-400">12 Min</div>
+                        <div class="text-xs text-slate-400 mt-1">Akses Tol & Stasiun Intermoda</div>
+                    </div>
+                    <div class="bg-cyber-card/50 p-4 rounded-xl border border-cyber-border">
+                        <div class="text-2xl sm:text-3xl font-bold font-space text-cyan-400">14.8%</div>
+                        <div class="text-xs text-slate-400 mt-1">Estimasi Capital Gain / Thn</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINT AGITATION -->
+    <section class="py-20 bg-cyber-card/30 border-y border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Analisis Pasar & Realitas</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Mengapa Mencari Apartemen Mewah Seringkali Melelahkan?</h3>
+                <p class="text-slate-400 mt-3">Sebagian besar pencari properti terjebak dalam informasi yang tidak transparan dan lokasi yang kurang strategis.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Pain Card 1 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border relative overflow-hidden group hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="map-pin-off" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Lokasi Terisolasi & Macet</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Banyak proyek menjanjikan kemudahan, namun kenyataannya jauh dari pusat bisnis, stasiun, dan akses tol utama.</p>
+                </div>
+
+                <!-- Pain Card 2 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border relative overflow-hidden group hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="file-warning" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Skema Keuangan Rumit & Biaya Tersembunyi</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Simulasi cicilan yang tidak transparan dan kejutan biaya akad membuat anggaran finansial Anda berantakan.</p>
+                </div>
+
+                <!-- Pain Card 3 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border relative overflow-hidden group hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Fasilitas Kuno Tanpa Standar Masa Depan</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Apartemen konvensional minim teknologi pintar, minim sistem keamanan modern, dan cepat mengalami depresiasi nilai.</p>
+                </div>
+            </div>
+
+            <!-- Solution Highlight -->
+            <div class="mt-16 bg-gradient-to-r from-cyan-950/40 via-purple-950/40 to-cyan-950/40 p-8 md:p-12 rounded-3xl border border-cyan-500/30 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div>
+                    <div class="inline-block text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">Solusi Utama Oleh Riko Property</div>
+                    <h4 class="text-2xl md:text-3xl font-bold font-space text-white">Nexus BSD: Jawaban Mutlak Hunian Berkelas</h4>
+                    <p class="text-slate-300 mt-2 max-w-2xl text-sm md:text-base">Menjawab seluruh masalah Anda dengan <span class="text-cyan-400 font-medium">lokasi strategis</span> tingkat tinggi, transparansi finansial menyeluruh, dan ekosistem digital mandiri.</p>
+                </div>
+                <a href="https://wa.me/01234567890?text=Halo%20Riko%20Property%2C%20saya%20ingin%20konsultasi%20unit%20Apartemen%20mewah" target="_blank" class="whitespace-nowrap bg-cyan-500 hover:bg-cyan-400 text-black font-space font-bold px-6 py-3.5 rounded-xl shadow-lg transition-all glow-cyan">
+                    Konsultasi Gratis Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- UNIT CLUSTER FILTER (Interactive Component 1) -->
+    <section id="cluster" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Interactive Cluster Scanner</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Pilih Cluster & Tipe Unit Eksklusif</h3>
+                    <p class="text-slate-400 mt-2">Filter unit apartemen mewah sesuai dengan kebutuhan lifestyle dan investasi Anda.</p>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2 bg-cyber-card p-1.5 rounded-xl border border-cyber-border">
+                    <button class="cluster-filter-btn px-4 py-2 rounded-lg text-sm font-space font-medium bg-cyan-500 text-black transition-all" data-filter="all">Semua Unit</button>
+                    <button class="cluster-filter-btn px-4 py-2 rounded-lg text-sm font-space font-medium text-slate-300 hover:text-white transition-all" data-filter="studio">Studio Deluxe</button>
+                    <button class="cluster-filter-btn px-4 py-2 rounded-lg text-sm font-space font-medium text-slate-300 hover:text-white transition-all" data-filter="2br">2 BR Suite</button>
+                    <button class="cluster-filter-btn px-4 py-2 rounded-lg text-sm font-space font-medium text-slate-300 hover:text-white transition-all" data-filter="penthouse">Penthouse</button>
+                </div>
+            </div>
+
+            <!-- Cluster Cards Grid -->
+            <div id="unit-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Unit 1 -->
+                <div class="unit-card bg-cyber-card rounded-2xl border border-cyber-border overflow-hidden group hover:border-cyan-500/50 transition-all" data-category="studio" data-price="1200000000">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Studio Deluxe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-cyan-400 border border-cyan-500/30">
+                            Tower A • Lantai 12
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-cyan-500 text-black font-space font-bold px-3 py-1 rounded-lg text-sm">
+                            Rp 1.2 Milyar
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold font-space text-white mb-2">Studio Deluxe Suite</h4>
+                        <p class="text-slate-400 text-sm mb-6">Cocok untuk eksekutif muda & profesional modern dengan view langsung ke CBD BSD.</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6 text-sm text-slate-300 border-y border-cyber-border py-4">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="maximize" class="w-4 h-4 text-cyan-400"></i>
+                                <span>38 m² Semigross</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="bed" class="w-4 h-4 text-cyan-400"></i>
+                                <span>1 Bed / 1 Bath</span>
+                            </div>
+                        </div>
+                        <button onclick="selectUnit('Studio Deluxe Suite', 1200000000)" class="w-full bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black font-space font-bold py-3 rounded-xl border border-cyan-500/30 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Booking Unit Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Unit 2 -->
+                <div class="unit-card bg-cyber-card rounded-2xl border border-cyber-border overflow-hidden group hover:border-cyan-500/50 transition-all" data-category="2br" data-price="2400000000">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="2 BR Executive" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-cyan-400 border border-cyan-500/30">
+                            Tower B • Lantai 21
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-cyan-500 text-black font-space font-bold px-3 py-1 rounded-lg text-sm">
+                            Rp 2.4 Milyar
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold font-space text-white mb-2">2 BR Executive Suite</h4>
+                        <p class="text-slate-400 text-sm mb-6">Ruang keluarga luas dengan balkon privat panoramic view menghadap sunset.</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6 text-sm text-slate-300 border-y border-cyber-border py-4">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="maximize" class="w-4 h-4 text-cyan-400"></i>
+                                <span>76 m² Semigross</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="bed" class="w-4 h-4 text-cyan-400"></i>
+                                <span>2 Bed / 2 Bath</span>
+                            </div>
+                        </div>
+                        <button onclick="selectUnit('2 BR Executive Suite', 2400000000)" class="w-full bg-cyan-500/10 hover:bg-cyan-500 text-cyan-400 hover:text-black font-space font-bold py-3 rounded-xl border border-cyan-500/30 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Booking Unit Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Unit 3 -->
+                <div class="unit-card bg-cyber-card rounded-2xl border border-cyber-border overflow-hidden group hover:border-cyan-500/50 transition-all" data-category="penthouse" data-price="5500000000">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Imperial Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono text-purple-400 border border-purple-500/30">
+                            Tower A • Top Floor
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-purple-500 text-white font-space font-bold px-3 py-1 rounded-lg text-sm">
+                            Rp 5.5 Milyar
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-2xl font-bold font-space text-white mb-2">Imperial Penthouse</h4>
+                        <p class="text-slate-400 text-sm mb-6">Mahakarya tertinggi dengan private infinity pool dan sky lounge eksklusif.</p>
+                        <div class="grid grid-cols-2 gap-4 mb-6 text-sm text-slate-300 border-y border-cyber-border py-4">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="maximize" class="w-4 h-4 text-purple-400"></i>
+                                <span>180 m² Semigross</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="bed" class="w-4 h-4 text-purple-400"></i>
+                                <span>4 Bed / 4 Bath</span>
+                            </div>
+                        </div>
+                        <button onclick="selectUnit('Imperial Penthouse', 5500000000)" class="w-full bg-purple-500/10 hover:bg-purple-500 text-purple-300 hover:text-white font-space font-bold py-3 rounded-xl border border-purple-500/30 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-cart" class="w-4 h-4"></i> Booking Unit Ini
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPR CALCULATOR SIMULATOR (Interactive Component 2) -->
+    <section id="kpr" class="py-20 bg-cyber-card/40 border-y border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Simulasi Finansial Presisi</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">KPR Anuitas Calculator</h3>
+                <p class="text-slate-400 mt-3">Hitung estimasi cicilan bulanan Anda secara real-time dengan pengaturan fleksibel.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Calculator Inputs (7 Cols) -->
+                <div class="lg:col-span-7 bg-cyber-card p-6 md:p-8 rounded-3xl border border-cyber-border space-y-6">
+                    
+                    <!-- Harga Properti -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-space font-medium text-slate-300">Harga Properti (Rp)</label>
+                            <span id="price-display" class="font-mono text-cyan-400 font-bold text-lg">Rp 1.500.000.000</span>
+                        </div>
+                        <input type="range" id="input-price" min="500000000" max="10000000000" step="100000000" value="1500000000" class="w-full accent-cyan-400 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Uang Muka (DP %) -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-space font-medium text-slate-300">Uang Muka / DP (<span id="dp-pct-display">20</span>%)</label>
+                            <span id="dp-display" class="font-mono text-cyan-400 font-bold">Rp 300.000.000</span>
+                        </div>
+                        <input type="range" id="input-dp" min="10" max="60" step="5" value="20" class="w-full accent-cyan-400 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Tenor / Jangka Waktu -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-space font-medium text-slate-300">Tenor Kredit</label>
+                            <span id="tenor-display" class="font-mono text-cyan-400 font-bold">15 Tahun</span>
+                        </div>
+                        <input type="range" id="input-tenor" min="5" max="30" step="1" value="15" class="w-full accent-cyan-400 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                    <!-- Suku Bunga -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-space font-medium text-slate-300">Suku Bunga Eff / Tahun</label>
+                            <span id="interest-display" class="font-mono text-cyan-400 font-bold">6.5%</span>
+                        </div>
+                        <input type="range" id="input-interest" min="3.0" max="15.0" step="0.5" value="6.5" class="w-full accent-cyan-400 bg-slate-800 h-2 rounded-lg cursor-pointer">
+                    </div>
+
+                </div>
+
+                <!-- Calculator Results (5 Cols) -->
+                <div class="lg:col-span-5 bg-gradient-to-br from-cyan-950/60 to-cyber-card p-8 rounded-3xl border border-cyan-500/40 glow-cyan flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-space font-semibold text-white mb-6 flex items-center gap-2">
+                            <i data-lucide="calculator" class="w-5 h-5 text-cyan-400"></i> Ringkasan Simulasi
+                        </h4>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex justify-between items-center pb-3 border-b border-cyber-border">
+                                <span class="text-slate-400 text-sm">Plafon Pinjaman (KPR)</span>
+                                <span id="res-loanamt" class="font-mono text-white font-semibold">Rp 1.200.000.000</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-cyber-border">
+                                <span class="text-slate-400 text-sm">Total Uang Muka (DP)</span>
+                                <span id="res-dpamt" class="font-mono text-white font-semibold">Rp 300.000.000</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-cyber-border">
+                                <span class="text-slate-400 text-sm">Estimasi Cicilan / Bulan</span>
+                                <span id="res-monthly" class="font-mono text-cyan-400 font-bold text-xl">Rp 10.468.200</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="sendKPRToWhatsApp()" class="w-full bg-gradient-to-r from-cyan-500 to-teal-400 hover:from-cyan-400 hover:to-teal-300 text-black font-space font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-5 h-5"></i> Ajukan KPR via WhatsApp
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE / BENEFIT GRID -->
+    <section id="features" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Keunggulan Mutlak</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Dirancang Untuk Gaya Hidup Berkelas</h3>
+                <p class="text-slate-400 mt-3">Setiap detail apartemen mewah Nexus BSD memadukan estetika arsitektur modern dan efisiensi teknologi.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
+                        <i data-lucide="compass" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Lokasi Strategis Utama</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Terletak tepat di jantung CBD BSD, dikelilingi pusat perbelanjaan internasional, universitas terkemuka, dan akses tol langsung.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center mb-6">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Smart Home & Biometric Security</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Sistem kendali hunian terintegrasi IoT (Internet of Things), pengenalan wajah, dan keamanan swakelola 24 jam.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border hover:border-cyan-500/50 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6">
+                        <i data-lucide="trees" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-space text-white mb-3">Sky Garden & Infinity Pool</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">Fasilitas rekreasi kelas dunia di lantai rooftop dengan pemandangan kota 360 derajat yang menakjubkan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIRTUAL TOUR PREVIEW (Interactive Component 3) -->
+    <section id="virtual-tour" class="py-20 bg-cyber-card/30 border-y border-cyber-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Immersive Experience</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Virtual Tour 360° Showroom</h3>
+                <p class="text-slate-400 mt-3">Jelajahi setiap sudut kemewahan unit apartemen tanpa harus keluar rumah.</p>
+            </div>
+
+            <div class="relative rounded-3xl overflow-hidden border border-cyber-border glow-cyan group">
+                <div class="relative h-[450px] md:h-[600px]">
+                    <img id="tour-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Virtual Tour Showroom" class="w-full h-full object-cover transition-all duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    <!-- Hotspots / Interactive Buttons on Image -->
+                    <div class="absolute bottom-8 left-8 right-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                        <div>
+                            <span id="tour-title" class="text-cyan-400 font-mono text-sm tracking-wider uppercase">Living Room & Dining Area</span>
+                            <h4 id="tour-desc" class="text-2xl font-bold font-space text-white mt-1">Kemewahan Ruang Tamu dengan Floor-to-Ceiling Window</h4>
+                        </div>
+                        <div class="flex items-center gap-3 bg-cyber-card/80 backdrop-blur-md p-2 rounded-2xl border border-cyber-border">
+                            <button onclick="changeTour(0)" class="tour-dot px-4 py-2 rounded-xl text-xs font-space font-semibold bg-cyan-500 text-black transition-all">Living Room</button>
+                            <button onclick="changeTour(1)" class="tour-dot px-4 py-2 rounded-xl text-xs font-space font-semibold text-slate-300 hover:text-white transition-all">Master Bedroom</button>
+                            <button onclick="changeTour(2)" class="tour-dot px-4 py-2 rounded-xl text-xs font-space font-semibold text-slate-300 hover:text-white transition-all">Sky Pool</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TESTIMONIALS -->
+    <section id="testimonials" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Testimoni Klien & Investor</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Apa Kata Mereka yang Telah Berinvestasi?</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">"Lokasi strategis di Nexus BSD benar-benar terbukti. Nilai investasi unit 2 BR saya naik signifikan dalam kurun waktu kurang dari setahun."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-cyber-border">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold font-space">HW</div>
+                        <div>
+                            <div class="font-bold font-space text-white text-sm">Hendra Wijaya</div>
+                            <div class="text-xs text-slate-400">Investor Properti & Pengusaha</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">"Pelayanan Riko Property sangat profesional dan transparan. Simulasi KPR dan proses akad dibantu sampai tuntas tanpa ribet."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-cyber-border">
+                        <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold font-space">CL</div>
+                        <div>
+                            <div class="font-bold font-space text-white text-sm">Clarissa Lestari</div>
+                            <div class="text-xs text-slate-400">Senior Executive & Buyer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="bg-cyber-card p-8 rounded-2xl border border-cyber-border flex flex-col justify-between">
+                    <div>
+                        <div class="flex gap-1 text-amber-400 mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-6">"Desain futuristik dan fasilitas smart home-nya luar biasa. Sangat nyaman untuk hunian pribadi sekaligus prestisius."</p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-6 border-t border-cyber-border">
+                        <div class="w-10 h-10 rounded-full bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold font-space">DR</div>
+                        <div>
+                            <div class="font-bold font-space text-white text-sm">Dr. Reza Pratama</div>
+                            <div class="text-xs text-slate-400">Dokter Spesialis & Konsultan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq" class="py-20 bg-cyber-card/30 border-y border-cyber-border">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-cyan-400 mb-3">Informasi & Pertanyaan</h2>
+                <h3 class="text-3xl md:text-4xl font-bold font-space text-white">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-cyber-card border border-cyber-border rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left font-space font-semibold text-white flex justify-between items-center gap-4 hover:text-cyan-400 transition-colors">
+                        <span>Bagaimana cara melakukan pemesanan unit apartemen di Riko Property?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+                        Anda dapat langsung memilih unit melalui cluster scanner di atas atau menghubungi agen kami via tombol WhatsApp. Tim kami akan memandu proses pemilihan unit, verifikasi berkas, hingga penjadwalan kunjungan showroom.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="bg-cyber-card border border-cyber-border rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left font-space font-semibold text-white flex justify-between items-center gap-4 hover:text-cyan-400 transition-colors">
+                        <span>Bank apa saja yang bekerja sama untuk fasilitas KPR?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+                        Kami bekerja sama dengan bank-bank terkemuka di Indonesia seperti BCA, Mandiri, BNI, dan CIMB Niaga dengan penawaran suku bunga spesial khusus pembelian melalui Riko Property.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="bg-cyber-card border border-cyber-border rounded-2xl overflow-hidden">
+                    <button class="faq-toggle w-full p-6 text-left font-space font-semibold text-white flex justify-between items-center gap-4 hover:text-cyan-400 transition-colors">
+                        <span>Kapan estimasi serah terima kunci (handover) unit Nexus BSD?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-sm text-slate-400 leading-relaxed">
+                        Serah terima kunci Tahap I dijadwalkan mulai Q4 2026 sesuai dengan progress pembangunan infrastruktur yang on-track.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 bg-cyber-bg border-t border-cyber-border text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center">
+                    <i data-lucide="hexagon" class="w-4 h-4 text-black fill-cyan-400"></i>
+                </div>
+                <span class="font-space font-bold text-white tracking-wider">RIKO PROPERTY</span>
+            </div>
+            
+            <div class="text-center text-xs text-slate-500">
+                &copy; 2026 Riko Property. All rights reserved. Nexus BSD Ecosystem.
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/01234567890" target="_blank" class="w-10 h-10 rounded-xl bg-cyber-card border border-cyber-border flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/50 transition-all">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY FLOATING CTA -->
+    <div class="fixed bottom-6 left-6 z-40 hidden sm:block">
+        <a href="https://wa.me/01234567890?text=Halo%20Riko%20Property%2C%20saya%20ingin%20pesan%20Apartemen%20mewah" target="_blank" class="flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-black font-space font-bold px-6 py-3.5 rounded-full shadow-2xl transition-all duration-300 glow-cyan hover:scale-105">
+            <i data-lucide="message-square" class="w-5 h-5 fill-black"></i>
+            <span>Chat WhatsApp Riko</span>
+        </a>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Toast Notification System (No alert() usage)
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `pointer-events-auto flex items-center gap-3 px-5 py-4 rounded-2xl bg-cyber-card border border-cyan-500/50 text-white shadow-2xl glow-cyan transition-all duration-300 transform translate-y-2 opacity-0`;
+            
+            toast.innerHTML = `
+                <i data-lucide="check-circle-2" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+                <span class="text-sm font-space font-medium">${message}</span>
+            `;
+            
+            container.appendChild(toast);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-2', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Unit Cluster Filter Logic
+        const filterBtns = document.querySelectorAll('.cluster-filter-btn');
+        const unitCards = document.querySelectorAll('.unit-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-cyan-500', 'text-black');
+                    b.classList.add('text-slate-300');
+                });
+                btn.classList.add('bg-cyan-500', 'text-black');
+                btn.classList.remove('text-slate-300');
+
+                const filter = btn.getAttribute('data-filter');
+                unitCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Select Unit Action
+        function selectUnit(unitName, price) {
+            const formattedPrice = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(price);
+            showToast(`Unit ${unitName} dipilih (${formattedPrice})! Mengarahkan ke WhatsApp...`);
+            setTimeout(() => {
+                const message = encodeURIComponent(`Halo Riko Property, saya ingin memesan unit ${unitName} dengan harga ${formattedPrice}. Mohon informasi selanjutnya.`);
+                window.open(`https://wa.me/01234567890?text=${message}`, '_blank');
+            }, 1000);
+        }
+
+        // KPR Calculator Simulator Logic
+        const inputPrice = document.getElementById('input-price');
+        const inputDp = document.getElementById('input-dp');
+        const inputTenor = document.getElementById('input-tenor');
+        const inputInterest = document.getElementById('input-interest');
+
+        const priceDisplay = document.getElementById('price-display');
+        const dpPctDisplay = document.getElementById('dp-pct-display');
+        const dpDisplay = document.getElementById('dp-display');
+        const tenorDisplay = document.getElementById('tenor-display');
+        const interestDisplay = document.getElementById('interest-display');
+
+        const resLoanAmt = document.getElementById('res-loanamt');
+        const resDpAmt = document.getElementById('res-dpamt');
+        const resMonthly = document.getElementById('res-monthly');
+
+        function formatIDR(val) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(val);
+        }
+
+        function calculateKPR() {
+            const price = parseFloat(inputPrice.value);
+            const dpPct = parseFloat(inputDp.value);
+            const tenorYears = parseInt(inputTenor.value);
+            const annualInterest = parseFloat(inputInterest.value) / 100;
+
+            const dpAmt = price * (dpPct / 100);
+            const loanAmt = price - dpAmt;
+
+            const monthlyInterest = annualInterest / 12;
+            const totalMonths = tenorYears * 12;
+
+            // Anuity formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
+            let monthlyPayment = 0;
+            if (monthlyInterest === 0) {
+                monthlyPayment = loanAmt / totalMonths;
+            } else {
+                monthlyPayment = loanAmt * (monthlyInterest * Math.pow(1 + monthlyInterest, totalMonths)) / (Math.pow(1 + monthlyInterest, totalMonths) - 1);
+            }
+
+            // Update UI displays
+            priceDisplay.textContent = formatIDR(price);
+            dpPctDisplay.textContent = dpPct;
+            dpDisplay.textContent = formatIDR(dpAmt);
+            tenorDisplay.textContent = `${tenorYears} Tahun`;
+            interestDisplay.textContent = `${inputInterest.value}%`;
+
+            resLoanAmt.textContent = formatIDR(loanAmt);
+            resDpAmt.textContent = formatIDR(dpAmt);
+            resMonthly.textContent = formatIDR(monthlyPayment);
+        }
+
+        [inputPrice, inputDp, inputTenor, inputInterest].forEach(el => {
+            el.addEventListener('input', calculateKPR);
+        });
+
+        calculateKPR();
+
+        function sendKPRToWhatsApp() {
+            const price = priceDisplay.textContent;
+            const dp = dpDisplay.textContent;
+            const tenor = tenorDisplay.textContent;
+            const monthly = resMonthly.textContent;
+
+            const msg = encodeURIComponent(`Halo Riko Property, saya telah melakukan simulasi KPR untuk Apartemen Mewah:\n- Harga: ${price}\n- DP: ${dp}\n- Tenor: ${tenor}\n- Estimasi Cicilan: ${monthly} / bulan\nMohon info kelanjutan proses pengajuannya.`);
+            showToast('Menyiapkan data kalkulasi KPR ke WhatsApp...');
+            setTimeout(() => {
+                window.open(`https://wa.me/01234567890?text=${msg}`, '_blank');
+            }, 1000);
+        }
+
+        // Virtual Tour Preview Data
+        const tourData = [
+            {
+                image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+                title: "Living Room & Dining Area",
+                desc: "Kemewahan Ruang Tamu dengan Floor-to-Ceiling Window"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1600&q=80",
+                title: "Master Bedroom Suite",
+                desc: "Kamar tidur utama bergaya resors bintang lima dengan walk-in closet"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1600&q=80",
+                title: "Sky Pool & Rooftop Lounge",
+                desc: "Fasilitas kolam renang tanpa batas dengan pemandangan cakrawala CBD BSD"
+            }
+        ];
+
+        function changeTour(index) {
+            const data = tourData[index];
+            document.getElementById('tour-image').src = data.image;
+            document.getElementById('tour-title').textContent = data.title;
+            document.getElementById('tour-desc').textContent = data.desc;
+
+            const dots = document.querySelectorAll('.tour-dot');
+            dots.forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add('bg-cyan-500', 'text-black');
+                    dot.classList.remove('text-slate-300');
+                } else {
+                    dot.classList.remove('bg-cyan-500', 'text-black');
+                    dot.classList.add('text-slate-300');
+                }
+            });
+        }
+
+        // FAQ Accordion Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    </script>
+</body>
+</html>
