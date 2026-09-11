@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chika Cake — Kelezatan Otentik Kue Jadul Tanpa Pengawet</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            900: '#0a0a0a',
+                            800: '#141414',
+                            700: '#1f1f1f',
+                            600: '#2a2a2a',
+                        },
+                        amberGold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d97706;
+        }
+        
+        .wood-pattern {
+            background-image: radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.05) 0%, transparent 80%), radial-gradient(circle at 10% 10%, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 0.95) 100%);
+        }
+    </style>
+</head>
+<body class="wood-pattern min-h-screen text-gray-100 antialiased selection:bg-amberGold-600 selection:text-white">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 ease-out bg-obsidian-800 border border-amberGold-600 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <i data-lucide="check-circle" class="w-6 h-6 text-amberGold-500"></i>
+        <div>
+            <h4 class="font-semibold text-sm">Berhasil!</h4>
+            <p id="toast-message" class="text-xs text-gray-400">Item ditambahkan ke keranjang pesanan.</p>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-obsidian-900/90 backdrop-blur-md border-b border-obsidian-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amberGold-500 to-amberGold-700 flex items-center justify-center shadow-lg shadow-amberGold-600/20">
+                    <i data-lucide="cake" class="w-5 h-5 text-obsidian-900"></i>
+                </div>
+                <div>
+                    <span class="font-playfair font-bold text-xl tracking-wide text-white">Chika Cake</span>
+                    <span class="block text-[10px] uppercase font-mono tracking-widest text-amberGold-500">Artisanal Kue Jadul</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#menu" class="hover:text-amberGold-500 transition">Katalog Menu</a>
+                <a href="#keunggulan" class="hover:text-amberGold-500 transition">Filosofi Kami</a>
+                <a href="#testimoni" class="hover:text-amberGold-500 transition">Ulasan Pelanggan</a>
+                <a href="#faq" class="hover:text-amberGold-500 transition">FAQ</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Cart Trigger Button -->
+                <button onclick="toggleCartDrawer()" class="relative p-2.5 rounded-xl bg-obsidian-800 border border-obsidian-700 hover:border-amberGold-600 text-gray-300 hover:text-amberGold-500 transition flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span class="hidden sm:inline text-xs font-mono">Pesanan</span>
+                    <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-amberGold-600 text-obsidian-900 text-xs font-bold rounded-full flex items-center justify-center shadow-md scale-0 transition-transform duration-200">0</span>
+                </button>
+
+                <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition shadow-lg shadow-amberGold-600/20">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    <span>Chat Admin</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-20 pb-32">
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-amberGold-600/30 rounded-full blur-[120px]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-obsidian-800 border border-amberGold-600/40 text-amberGold-500 text-xs font-mono mb-6">
+                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                    <span>100% Resep Turun-Temurun • Tanpa Pengawet & Pewarna Buatan</span>
+                </div>
+                
+                <h1 class="font-playfair text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+                    Kue Jadul Otentik <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberGold-500 to-amberGold-700">Kenangan Manis Masa Kecil</span>
+                </h1>
+                
+                <p class="text-lg text-gray-300 mb-10 leading-relaxed font-light">
+                    Nikmati kembali kelembutan kue tradisional berkualitas tinggi buatan tangan Chika Cake. Dibuat segar setiap hari dengan bahan premium pilihan tanpa kompromi.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-bold text-base transition shadow-xl shadow-amberGold-600/20 flex items-center justify-center gap-3">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span>Pilih Menu Kue Jadul</span>
+                    </a>
+                    <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20tanya%20menu%20kue%20jadul%20hari%20ini" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-obsidian-600 text-gray-200 font-semibold text-base transition flex items-center justify-center gap-3">
+                        <i data-lucide="phone-call" class="w-5 h-5 text-amberGold-500"></i>
+                        <span>Konsultasi Pesanan</span>
+                    </a>
+                </div>
+                
+                <!-- Quick Metric Trust -->
+                <div class="grid grid-cols-3 gap-6 mt-16 pt-12 border-t border-obsidian-700 max-w-2xl mx-auto text-center">
+                    <div>
+                        <span class="block font-playfair font-bold text-2xl sm:text-3xl text-amberGold-500">100%</span>
+                        <span class="text-xs text-gray-400 font-mono">Tanpa Pengawet</span>
+                    </div>
+                    <div>
+                        <span class="block font-playfair font-bold text-2xl sm:text-3xl text-amberGold-500">Fresh</span>
+                        <span class="text-xs text-gray-400 font-mono">Panggang Setiap Hari</span>
+                    </div>
+                    <div>
+                        <span class="block font-playfair font-bold text-2xl sm:text-3xl text-amberGold-500">4.9★</span>
+                        <span class="text-xs text-gray-400 font-mono">Kepuasan Pelanggan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Point & Agitation -->
+    <section class="py-20 bg-obsidian-800/50 border-y border-obsidian-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="font-playfair text-3xl sm:text-4xl font-bold mb-4">Sering Kecewa dengan Kue Pasaran yang Kaku dan Terlalu Manis?</h2>
+                <p class="text-gray-400">Banyak toko kue komersial mengorbankan kualitas demi kuantitas produksi massal.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-obsidian-900 border border-obsidian-700 p-8 rounded-2xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 flex items-center justify-center mb-6">
+                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold mb-3">Bahan Pengawet Kimia</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Kue tahan berhari-hari tapi teksturnya keras, meninggalkan rasa getir di tenggorokan akibat pengawet buatan.</p>
+                </div>
+                
+                <div class="bg-obsidian-900 border border-obsidian-700 p-8 rounded-2xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold-500/10 border border-amberGold-500/20 text-amberGold-500 flex items-center justify-center mb-6">
+                        <i data-lucide="cookie" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold mb-3">Rasa Hambar & Artifisial</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Menggunakan pewarna dan perisa buatan yang mencolok mata, namun hilang cita rasa orisinalnya.</p>
+                </div>
+                
+                <div class="bg-obsidian-900 border border-obsidian-700 p-8 rounded-2xl relative">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 flex items-center justify-center mb-6">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair text-xl font-bold mb-3">Solusi Chika Cake</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Hadir mengobati rindu kue jadul autentik dengan butter pilihan, higienis, dan dijamin 100% tanpa bahan pengawet!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Menu & Filter Section -->
+    <section id="menu" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-amberGold-500 font-mono text-xs uppercase tracking-widest block mb-2">Katalog Pilihan</span>
+            <h2 class="font-playfair text-4xl font-bold mb-4">Menu Kue Jadul Spesial</h2>
+            <p class="text-gray-400">Pilih kategori kue favorit Anda dan rasakan kelezatannya langsung di rumah.</p>
+            
+            <!-- Live Filters -->
+            <div id="filter-container" class="flex flex-wrap items-center justify-center gap-3 mt-8">
+                <button onclick="filterMenu('all')" data-filter="all" class="filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-amberGold-600 text-obsidian-900 shadow-md">Semua Menu</button>
+                <button onclick="filterMenu('bolu')" data-filter="bolu" class="filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-obsidian-800 border border-obsidian-700 text-gray-300 hover:border-amberGold-600">Bolu & Tart</button>
+                <button onclick="filterMenu('basah')" data-filter="basah" class="filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-obsidian-800 border border-obsidian-700 text-gray-300 hover:border-amberGold-600">Kue Basah Tradisional</button>
+                <button onclick="filterMenu('kering')" data-filter="kering" class="filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-obsidian-800 border border-obsidian-700 text-gray-300 hover:border-amberGold-600">Kue Kering Jadul</button>
+            </div>
+        </div>
+
+        <!-- Menu Grid -->
+        <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="bolu">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&q=80&w=600" alt="Bolu Jadul Mentega" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-obsidian-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-amberGold-600/30 text-amberGold-500 text-xs font-mono">
+                            Best Seller
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Bolu & Tart</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Bolu Jadul Mentega Klasik</h3>
+                        <p class="text-gray-400 text-sm mb-4">Harum mentega murni dengan taburan meses cokelat jadul melimpah di atasnya. Super lembut!</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 75.000</span>
+                    </div>
+                    <button onclick="addToCart('Bolu Jadul Mentega Klasik', 75000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="basah">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&q=80&w=600" alt="Kue Lapis Legit" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-obsidian-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-amberGold-600/30 text-amberGold-500 text-xs font-mono">
+                            Premium Spice
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Kue Basah Tradisional</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Lapis Legit Spekuk</h3>
+                        <p class="text-gray-400 text-sm mb-4">Lapisan demi lapisan dengan rempah spekuk pilihan asli, kaya rasa dan bertekstur legit sempurna.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 165.000</span>
+                    </div>
+                    <button onclick="addToCart('Lapis Legit Spekuk', 165000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="kering">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&q=80&w=600" alt="Kue Nastar Klasik" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute top-3 right-3 bg-obsidian-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-amberGold-600/30 text-amberGold-500 text-xs font-mono">
+                            Favorite
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Kue Kering Jadul</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Nastar Keju Wisman</h3>
+                        <p class="text-gray-400 text-sm mb-4">Isian selai nanas asli buatan sendiri berpadu lumer dengan adonan mentega Wisman dan keju edam.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 95.000</span>
+                    </div>
+                    <button onclick="addToCart('Nastar Keju Wisman', 95000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="bolu">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&q=80&w=600" alt="Bolu Pandan" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Bolu & Tart</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Bolu Pandan Asli</h3>
+                        <p class="text-gray-400 text-sm mb-4">Harum daun pandan dan suji segar alami, tanpa perisa artifisial. Tekstur empuk membuai.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 70.000</span>
+                    </div>
+                    <button onclick="addToCart('Bolu Pandan Asli', 70000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="basah">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&q=80&w=600" alt="Kue Lumpur Surga" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Kue Basah Tradisional</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Kue Lumpur Kentang</h3>
+                        <p class="text-gray-400 text-sm mb-4">Paduan kentang asli dan santan kental berlimpah, bertabur kismis manis di bagian atasnya.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 50.000</span>
+                    </div>
+                    <button onclick="addToCart('Kue Lumpur Kentang (Box)', 50000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="menu-item bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden group hover:border-amberGold-600/50 transition duration-300 flex flex-col justify-between" data-category="kering">
+                <div>
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&q=80&w=600" alt="Kue Kastengel" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-mono text-amberGold-500 uppercase tracking-wider">Kue Kering Jadul</span>
+                        <h3 class="font-playfair text-xl font-bold mt-1 mb-2 text-white">Kastengel Keju Edam</h3>
+                        <p class="text-gray-400 text-sm mb-4">Gurihnya keju Edam tua dan Cheddar melimpah di setiap gigitan kue kering yang renyah ini.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0 flex items-center justify-between border-t border-obsidian-700/60 mt-4">
+                    <div>
+                        <span class="text-xs text-gray-400 block font-mono">Harga</span>
+                        <span class="font-mono font-bold text-amberGold-500 text-lg">Rp 105.000</span>
+                    </div>
+                    <button onclick="addToCart('Kastengel Keju Edam', 105000)" class="px-4 py-2.5 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-semibold text-sm transition flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                        <span>Pesan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Benefit Grid -->
+    <section id="keunggulan" class="py-24 bg-obsidian-800/40 border-y border-obsidian-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amberGold-500 font-mono text-xs uppercase tracking-widest block mb-2">Mengapa Memilih Kami</span>
+                <h2 class="font-playfair text-4xl font-bold mb-4">Standar Artisanal Chika Cake</h2>
+                <p class="text-gray-400">Komitmen kami untuk memberikan pengalaman kuliner terbaik bagi keluarga Anda.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-8 rounded-2xl bg-obsidian-900 border border-obsidian-700">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold-600/10 text-amberGold-500 flex items-center justify-center mb-6 border border-amberGold-600/20">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-lg mb-2">Resep Leluhur Asli</h3>
+                    <p class="text-gray-400 text-sm">Dipertahankan dari generasi ke generasi untuk menghasilkan cita rasa nostalgia yang sesungguhnya.</p>
+                </div>
+                
+                <div class="p-8 rounded-2xl bg-obsidian-900 border border-obsidian-700">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold-600/10 text-amberGold-500 flex items-center justify-center mb-6 border border-amberGold-600/20">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-lg mb-2">Tanpa Pengawet</h3>
+                    <p class="text-gray-400 text-sm">Jaminan kesehatan mutlak. Dibuat murni dari bahan alami tanpa bahan kimia tambahan apapun.</p>
+                </div>
+                
+                <div class="p-8 rounded-2xl bg-obsidian-900 border border-obsidian-700">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold-600/10 text-amberGold-500 flex items-center justify-center mb-6 border border-amberGold-600/20">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-lg mb-2">Panggang Setiap Hari</h3>
+                    <p class="text-gray-400 text-sm">Pesanan Anda baru akan dipanggang pada hari pengiriman untuk menjaga kesegaran maksimal.</p>
+                </div>
+                
+                <div class="p-8 rounded-2xl bg-obsidian-900 border border-obsidian-700">
+                    <div class="w-12 h-12 rounded-xl bg-amberGold-600/10 text-amberGold-500 flex items-center justify-center mb-6 border border-amberGold-600/20">
+                        <i data-lucide="truck" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-playfair font-bold text-lg mb-2">Pengiriman Aman</h3>
+                    <p class="text-gray-400 text-sm">Packing khusus yang kokoh dan rapi menjamin kue tiba di tangan Anda dalam kondisi utuh dan cantik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section id="testimoni" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-amberGold-500 font-mono text-xs uppercase tracking-widest block mb-2">Ulasan Pelanggan</span>
+            <h2 class="font-playfair text-4xl font-bold mb-4">Kata Mereka yang Sudah Mencoba</h2>
+            <p class="text-gray-400">Kepuasan Anda adalah prioritas dan kebanggaan terbesar kami.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 rounded-2xl bg-obsidian-800/60 border border-obsidian-700 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-1 text-amberGold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic mb-6">"Bolu jadul menteganya benar-benar mengingatkan saya pada kue buatan nenek dulu. Lembut, wangi butter murni, dan tidak bikin enek sama sekali!"</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-obsidian-700">
+                    <div class="w-10 h-10 rounded-full bg-amberGold-600/20 text-amberGold-500 font-bold flex items-center justify-center font-mono text-sm">
+                        SN
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm">Ibu Sinta Nurtanio</h4>
+                        <span class="text-xs text-gray-400 font-mono">Jakarta Selatan</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8 rounded-2xl bg-obsidian-800/60 border border-obsidian-700 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-1 text-amberGold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic mb-6">"Lapis legitnya juara! Rempahnya terasa pas dan legitnya tidak terlalu manis berlebihan. Recommended banget buat acara keluarga."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-obsidian-700">
+                    <div class="w-10 h-10 rounded-full bg-amberGold-600/20 text-amberGold-500 font-bold flex items-center justify-center font-mono text-sm">
+                        DR
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm">dr. David Rinaldi</h4>
+                        <span class="text-xs text-gray-400 font-mono">Bandung</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-8 rounded-2xl bg-obsidian-800/60 border border-obsidian-700 flex flex-col justify-between">
+                <div>
+                    <div class="flex items-center gap-1 text-amberGold-500 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm italic mb-6">"Pesan nastar untuk lebaran kemarin, lumer di mulut dan selai nanasnya enak banget. Adminnya juga ramah dan pengiriman super cepat."</p>
+                </div>
+                <div class="flex items-center gap-3 pt-4 border-t border-obsidian-700">
+                    <div class="w-10 h-10 rounded-full bg-amberGold-600/20 text-amberGold-500 font-bold flex items-center justify-center font-mono text-sm">
+                        AP
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-sm">Anita Puspitasari</h4>
+                        <span class="text-xs text-gray-400 font-mono">Surabaya</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing and Special Offer Banner -->
+    <section class="py-20 bg-gradient-to-r from-obsidian-800 via-obsidian-900 to-obsidian-800 border-y border-amberGold-600/30">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amberGold-600/10 border border-amberGold-600/40 text-amberGold-500 text-xs font-mono mb-6">
+                <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+                <span>Promo Penawaran Khusus Minggu Ini</span>
+            </div>
+            <h2 class="font-playfair text-3xl sm:text-5xl font-bold mb-6">Dapatkan Gratis Ongkir & Potongan Spesial</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto mb-10 text-base">
+                Nikmati penawaran khusus untuk pemesanan minimal 2 box kue jadul varian apa saja hari ini. Stok terbatas setiap harinya!
+            </p>
+            <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20klaim%20Promo%20Penawaran%20Khusus" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-bold text-base transition shadow-xl shadow-amberGold-600/20">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <span>Klaim Promo via WhatsApp</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section id="faq" class="py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <span class="text-amberGold-500 font-mono text-xs uppercase tracking-widest block mb-2">Pertanyaan Umum</span>
+            <h2 class="font-playfair text-4xl font-bold mb-4">FAQ Chika Cake</h2>
+            <p class="text-gray-400">Temukan informasi lengkap seputar pemesanan dan produk kami.</p>
+        </div>
+        
+        <div class="space-y-4">
+            <div class="bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-semibold flex items-center justify-between gap-4 focus:outline-none">
+                    <span>Berapa lama daya tahan kue jadul Chika Cake tanpa pengawet?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-amberGold-500 transition-transform duration-200"></i>
+                </button>
+                <div class="px-6 pb-6 text-gray-400 text-sm hidden">
+                    Karena dibuat tanpa pengawet kimia, kue basah/bolu kami bertahan 3-4 hari di suhu ruang dan hingga 7 hari di dalam kulkas. Untuk kue kering bisa bertahan hingga 2-3 bulan dalam wadah kedap udara.
+                </div>
+            </div>
+            
+            <div class="bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-semibold flex items-center justify-between gap-4 focus:outline-none">
+                    <span>Apakah kue dipanggang setiap hari atau stok lama?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-amberGold-500 transition-transform duration-200"></i>
+                </button>
+                <div class="px-6 pb-6 text-gray-400 text-sm hidden">
+                    Kami menerapkan sistem pre-order & fresh baked. Kue baru akan dipanggang setelah pesanan dikonfirmasi guna menjamin kesegaran dan kelembutan terbaik saat sampai di tangan Anda.
+                </div>
+            </div>
+            
+            <div class="bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-semibold flex items-center justify-between gap-4 focus:outline-none">
+                    <span>Bagaimana cara pengiriman agar kue tidak hancur?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-amberGold-500 transition-transform duration-200"></i>
+                </button>
+                <div class="px-6 pb-6 text-gray-400 text-sm hidden">
+                    Kami menggunakan layanan kurir instan (Gosend/GrabExpress) untuk area dalam kota guna memastikan kue tetap aman, rapi, dan tidak rusak di jalan.
+                </div>
+            </div>
+
+            <div class="bg-obsidian-800/60 border border-obsidian-700 rounded-2xl overflow-hidden">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-semibold flex items-center justify-between gap-4 focus:outline-none">
+                    <span>Bagaimana cara memesan melalui keranjang pesanan?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-amberGold-500 transition-transform duration-200"></i>
+                </button>
+                <div class="px-6 pb-6 text-gray-400 text-sm hidden">
+                    Anda cukup klik tombol "Pesan" pada menu yang diinginkan, buka ikon keranjang di pojok kanan atas, sesuaikan jumlah, lalu klik tombol Checkout WhatsApp untuk langsung mengirim format pesanan ke admin kami.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-obsidian-900 border-t border-obsidian-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amberGold-500 to-amberGold-700 flex items-center justify-center">
+                            <i data-lucide="cake" class="w-5 h-5 text-obsidian-900"></i>
+                        </div>
+                        <span class="font-playfair font-bold text-xl tracking-wide text-white">Chika Cake</span>
+                    </div>
+                    <p class="text-gray-400 text-sm max-w-sm mb-6">
+                        Penyedia kuliner & F&B kue jadul artisanal berstandar tinggi. Menghadirkan kenangan rasa otentik ke meja makan Anda setiap hari.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-obsidian-700 flex items-center justify-center hover:text-amberGold-500 transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-obsidian-700 flex items-center justify-center hover:text-amberGold-500 transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="https://wa.me/01234567890" class="w-10 h-10 rounded-xl bg-obsidian-800 border border-obsidian-700 flex items-center justify-center hover:text-amberGold-500 transition"><i data-lucide="message-circle" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-playfair font-bold text-base mb-4 text-white">Menu Cepat</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><a href="#menu" class="hover:text-amberGold-500 transition">Katalog Menu</a></li>
+                        <li><a href="#keunggulan" class="hover:text-amberGold-500 transition">Filosofi Kami</a></li>
+                        <li><a href="#testimoni" class="hover:text-amberGold-500 transition">Ulasan Pelanggan</a></li>
+                        <li><a href="#faq" class="hover:text-amberGold-500 transition">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-playfair font-bold text-base mb-4 text-white">Hubungi Kami</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-amberGold-500"></i> <span>01234567890</span></li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-amberGold-500"><span>Dapur Utama Chika Cake</span></i></li>
+                        <li class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-amberGold-500"></i> <span>Setiap Hari: 08.00 - 18.00</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-obsidian-700 text-center text-xs text-gray-500 font-mono">
+                &copy; 2026 Chika Cake. Hak Cipta Dilindungi. Didukung oleh Dola-Cafe Artisanal Theme.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating CTA Bar for Mobile -->
+    <div class="fixed bottom-0 left-0 right-0 z-30 bg-obsidian-900/95 backdrop-blur-md border-t border-obsidian-700 p-4 sm:hidden flex items-center justify-between gap-4">
+        <div>
+            <span class="block text-[10px] text-gray-400 font-mono">Total Keranjang</span>
+            <span id="mobile-total-price" class="font-mono font-bold text-amberGold-500 text-sm">Rp 0</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleCartDrawer()" class="px-4 py-2.5 rounded-xl bg-obsidian-800 border border-obsidian-700 text-gray-200 font-semibold text-xs flex items-center gap-2">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                <span>Keranjang</span>
+            </button>
+            <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" target="_blank" class="px-4 py-2.5 rounded-xl bg-amberGold-600 text-obsidian-900 font-bold text-xs flex items-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4"></i>
+                <span>WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Cart Drawer Interactive Sidebar -->
+    <div id="cart-overlay" onclick="toggleCartDrawer()" class="fixed inset-0 bg-obsidian-900/80 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cart-drawer" class="fixed top-0 right-0 bottom-0 w-full max-w-md bg-obsidian-900 border-l border-obsidian-700 z-50 transform translate-x-full transition-transform duration-300 flex flex-col justify-between shadow-2xl">
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-obsidian-700 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-amberGold-600/10 text-amberGold-500 flex items-center justify-center border border-amberGold-600/20">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-playfair font-bold text-lg text-white">Keranjang Pesanan</h3>
+                    <span id="cart-count-label" class="text-xs text-gray-400 font-mono">0 item dipilih</span>
+                </div>
+            </div>
+            <button onclick="toggleCartDrawer()" class="p-2 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 text-gray-400 hover:text-white transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Body / Item List -->
+        <div id="cart-items-container" class="p-6 flex-1 overflow-y-auto space-y-4">
+            <div id="empty-cart-state" class="text-center py-16">
+                <div class="w-16 h-16 rounded-full bg-obsidian-800 text-gray-500 flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                </div>
+                <h4 class="font-playfair font-bold text-base text-gray-300 mb-1">Keranjang Masih Kosong</h4>
+                <p class="text-xs text-gray-500">Silakan pilih menu kue jadul favorit Anda di katalog.</p>
+            </div>
+        </div>
+
+        <!-- Drawer Footer / Summary & Checkout -->
+        <div class="p-6 border-t border-obsidian-700 bg-obsidian-800/40">
+            <div class="space-y-2 mb-6">
+                <div class="flex items-center justify-between text-sm text-gray-400">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal" class="font-mono text-white">Rp 0</span>
+                </div>
+                <div class="flex items-center justify-between text-sm text-gray-400">
+                    <span>Biaya Kirim (Kurir Instan)</span>
+                    <span class="font-mono text-amberGold-500">Menyesuaikan</span>
+                </div>
+                <div class="pt-2 border-t border-obsidian-700 flex items-center justify-between text-base font-bold">
+                    <span class="text-white">Total Estimasi</span>
+                    <span id="cart-total" class="font-mono text-amberGold-500 text-xl">Rp 0</span>
+                </div>
+            </div>
+
+            <button onclick="checkoutWhatsApp()" class="w-full py-4 rounded-xl bg-amberGold-600 hover:bg-amberGold-500 text-obsidian-900 font-bold text-sm transition shadow-lg shadow-amberGold-600/20 flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <span>Checkout Pesanan ke WhatsApp</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // State Management Keranjang Pesanan
+        let cart = [];
+
+        // Live Filter Menu
+        function filterMenu(category) {
+            // Update active button state
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.dataset.filter === category) {
+                    btn.className = "filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-amberGold-600 text-obsidian-900 shadow-md";
+                } else {
+                    btn.className = "filter-btn px-5 py-2.5 rounded-xl font-medium text-sm transition bg-obsidian-800 border border-obsidian-700 text-gray-300 hover:border-amberGold-600";
+                }
+            });
+
+            // Filter grid items
+            document.querySelectorAll('.menu-item').forEach(item => {
+                if(category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Add to Cart Function
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if(existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, qty: 1 });
+            }
+            updateCartUI();
+            showToast(`Berhasil menambahkan ${name} ke keranjang.`);
+        }
+
+        // Update Quantity
+        function updateQty(name, delta) {
+            const item = cart.find(i => i.name === name);
+            if(item) {
+                item.qty += delta;
+                if(item.qty <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            }
+            updateCartUI();
+        }
+
+        // Update Cart UI
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const badge = document.getElementById('cart-badge');
+            const countLabel = document.getElementById('cart-count-label');
+            const subtotalEl = document.getElementById('cart-subtotal');
+            const totalEl = document.getElementById('cart-total');
+            const mobileTotalEl = document.getElementById('mobile-total-price');
+
+            let totalQty = 0;
+            let subtotal = 0;
+
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div id="empty-cart-state" class="text-center py-16">
+                        <div class="w-16 h-16 rounded-full bg-obsidian-800 text-gray-500 flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="shopping-bag" class="w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-playfair font-bold text-base text-gray-300 mb-1">Keranjang Masih Kosong</h4>
+                        <p class="text-xs text-gray-500">Silakan pilih menu kue jadul favorit Anda di katalog.</p>
+                    </div>
+                `;
+                badge.style.transform = 'scale(0)';
+                badge.innerText = '0';
+                countLabel.innerText = '0 item dipilih';
+                subtotalEl.innerText = 'Rp 0';
+                totalEl.innerText = 'Rp 0';
+                mobileTotalEl.innerText = 'Rp 0';
+                lucide.createIcons();
+                return;
+            }
+
+            badge.style.transform = 'scale(1)';
+            let html = '';
+
+            cart.forEach(item => {
+                totalQty += item.qty;
+                subtotal += item.price * item.qty;
+                html += `
+                    <div class="flex items-center justify-between bg-obsidian-800/80 p-4 rounded-xl border border-obsidian-700">
+                        <div class="pr-2">
+                            <h4 class="font-semibold text-sm text-white">${item.name}</h4>
+                            <span class="font-mono text-xs text-amberGold-500">Rp ${item.price.toLocaleString('id-ID')}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-2 bg-obsidian-900 px-2.5 py-1 rounded-lg border border-obsidian-700">
+                                <button onclick="updateQty('${item.name}', -1)" class="text-gray-400 hover:text-white font-mono text-sm">-</button>
+                                <span class="font-mono text-xs text-white">${item.qty}</span>
+                                <button onclick="updateQty('${item.name}', 1)" class="text-gray-400 hover:text-white font-mono text-sm">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            badge.innerText = totalQty;
+            countLabel.innerText = `${totalQty} item dipilih`;
+            subtotalEl.innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            totalEl.innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            mobileTotalEl.innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+            lucide.createIcons();
+        }
+
+        // Toggle Cart Drawer
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if(drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Checkout WhatsApp Summary
+        function checkoutWhatsApp() {
+            if(cart.length === 0) {
+                showToast('Keranjang Anda masih kosong!', true);
+                return;
+            }
+
+            let message = "Halo Chika Cake, saya ingin memesan produk berikut:\n\n";
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                let itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                message += `${index + 1}. ${item.name} x${item.qty} = Rp ${itemTotal.toLocaleString('id-ID')}\n`;
+            });
+
+            message += `\n*Total Keseluruhan: Rp ${subtotal.toLocaleString('id-ID')}*\n\nMohon informasi ketersediaan dan ongkir pengirimannya. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/01234567890?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            
+            msgEl.innerText = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 3000);
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            
+            if(content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
