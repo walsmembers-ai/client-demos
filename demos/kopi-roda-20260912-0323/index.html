@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Roda - Layanan Unggulan Kopi Roda | Asri, Santai dan Nyaman</title>
+    <meta name="description" content="Nikmati suasana Asri, Santai dan nyaman bersama Kopi Roda. Solusi kuliner & F&B terbaik untuk Anda yang mendambakan kualitas dan kenyamanan maksimal. Pesan sekarang!">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0ec7a5',
+                            50: '#e6fbf7',
+                            100: '#cbf7ef',
+                            500: '#0ec7a5',
+                            600: '#0ab393',
+                            700: '#088f75',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white pb-20 md:pb-0">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold tracking-tight text-slate-900">Kopi Roda</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#fitur" class="hover:text-brand-500 transition">Keunggulan</a>
+                <a href="#testimoni" class="hover:text-brand-500 transition">Testimoni</a>
+                <a href="#penawaran" class="hover:text-brand-500 transition">Penawaran</a>
+                <a href="#faq" class="hover:text-brand-500 transition">FAQ</a>
+            </div>
+            <div>
+                <a href="https://wa.me/01234567890?text=Halo%20Kopi%20Roda%2C%20saya%20ingin%20pesan%20Layanan%20Unggulan%20Kopi%20Roda" target="_blank" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-semibold text-sm shadow-lg shadow-brand-500/25 transition-all transform hover:-translate-y-0.5">
+                    Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Badge -->
+    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-brand-50/50 via-white to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-sm font-semibold mb-6 shadow-sm">
+                    <svg class="w-4 h-4 text-brand-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>🛒 Kuliner & F&B / Retail Store Terpercaya</span>
+                </div>
+                
+                <!-- Headline -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+                    Nikmati Suasana <span class="text-brand-500">Asri, Santai dan Nyaman</span> Bersama Layanan Unggulan Kopi Roda
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-lg sm:text-xl text-slate-600 mb-10 leading-relaxed max-w-2xl mx-auto">
+                    Hadirkan pengalaman kuliner terbaik yang dirancang khusus untuk melepas penat Anda. Pelayanan profesional, cepat, dan transparan untuk kepuasan maksimal.
+                </p>
+                
+                <!-- CTA Group -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="https://wa.me/01234567890?text=Halo%20Kopi%20Roda%2C%20saya%20ingin%20pesan%20Layanan%20Unggulan%20Kopi%20Roda" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/30 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Pesan Sekarang via WhatsApp
+                    </a>
+                    <a href="#fitur" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 font-semibold text-base border border-slate-200 transition-all text-center">
+                        Pelajari Dulu
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Point Agitation Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                    Pernahkah Anda Mengalami Hal Ini Saat Mencari Layanan F&B?
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Jangan biarkan pengalaman buruk merusak waktu berharga dan suasana hati Anda.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-red-50/50 border border-red-100 rounded-3xl p-8 transition hover:shadow-lg">
+                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center text-red-500 mb-6 font-bold text-xl">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Penyedia Tidak Profesional</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Kesulitan menemukan penyedia 🛒 Kuliner & F&B / Retail Store yang benar-benar ahli, mengecewakan, dan kurang berpengalaman di bidangnya.
+                    </p>
+                </div>
+
+                <div class="bg-red-50/50 border border-red-100 rounded-3xl p-8 transition hover:shadow-lg">
+                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center text-red-500 mb-6 font-bold text-xl">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pelayanan Lambat & Bertele-tele</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Waktu terbuang sia-sia hanya untuk menunggu respon atau proses pesanan yang lambat tanpa kepastian jadwal yang jelas.
+                    </p>
+                </div>
+
+                <div class="bg-red-50/50 border border-red-100 rounded-3xl p-8 transition hover:shadow-lg">
+                    <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center text-red-500 mb-6 font-bold text-xl">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Biaya & Informasi Tidak Transparan</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Sering muncul biaya tersembunyi di akhir atau informasi produk yang membingungkan, membuat Anda merasa dirugikan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Agitation Conclusion Box -->
+            <div class="mt-12 max-w-3xl mx-auto bg-slate-900 text-white rounded-3xl p-8 sm:p-10 text-center shadow-xl">
+                <h3 class="text-2xl font-bold mb-3">Solusi Nyata Hadir untuk Anda</h3>
+                <p class="text-slate-300 mb-6">
+                    Kopi Roda hadir menghapus semua keraguan tersebut dengan standar pelayanan terbaik, transparan, dan suasana yang mendukung relaksasi Anda.
+                </p>
+                <a href="https://wa.me/01234567890?text=Halo%20Kopi%20Roda%2C%20saya%20ingin%20pesan%20Layanan%20Unggulan%20Kopi%20Roda" target="_blank" class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm shadow-lg transition">
+                    Atasi Masalah Anda Sekarang
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature & Benefit Grid Section -->
+    <section id="fitur" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                    Mengapa Memilih Layanan Unggulan Kopi Roda?
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Kami memberikan lebih dari sekadar produk; kami memberikan pengalaman terbaik.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Suasana Asri & Nyaman</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Dirancang dengan konsep estetika yang menenangkan, membuat setiap detik kunjungan atau pemesanan Anda terasa begitu berkesan.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Proses Super Cepat</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Sistem pelayanan efisien memastikan pesanan dan kebutuhan Anda diproses tanpa antrean panjang dan membuang waktu.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-50 text-brand-500 flex items-center justify-center mb-6 group-hover:bg-brand-500 group-hover:text-white transition">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">100% Transparan</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Kejelasan harga, kualitas bahan, dan pelayanan tanpa ada biaya tersembunyi memberikan ketenangan pikiran penuh.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Testimonials -->
+    <section id="testimoni" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                    Apa Kata Mereka yang Telah Merasakan Manfaatnya?
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Kepercayaan pelanggan adalah bukti nyata kualitas layanan kami.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-700 mb-6 italic">
+                            "Suasananya bener-bener asri dan santai! Pelayanan Kopi Roda sangat cepat dan ramah. Nggak salah pilih tempat untuk melepas penat."
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm">
+                            RD
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Rian Dwi</h4>
+                            <p class="text-xs text-slate-500">Profesional Swasta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-700 mb-6 italic">
+                            "Transparan banget harganya dan layanannya profesional. Jarang banget nemuin penyedia kuliner sebagus ini di kelasnya. Recommended!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm">
+                            AN
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Amanda Nabila</h4>
+                            <p class="text-xs text-slate-500">Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-700 mb-6 italic">
+                            "Tempatnya nyaman banget buat ngerjain tugas atau sekadar ngobrol santai. Pelayanannya cepat dan memuaskan. Pasti bakal balik lagi!"
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-3 pt-4 border-t border-slate-200">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 text-white font-bold flex items-center justify-center text-sm">
+                            FP
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Fajar Pratama</h4>
+                            <p class="text-xs text-slate-500">Mahasiswa / Pekerja Kreatif</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing and Offer Section -->
+    <section id="penawaran" class="py-20 bg-brand-50/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-brand-100 text-brand-700 font-bold text-xs uppercase tracking-wider mb-3">
+                    Promo Penawaran Khusus
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                    Amankan Penawaran Spesial Anda Hari Ini
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Dapatkan keistimewaan layanan terbaik dengan penawaran terbatas khusus untuk Anda.
+                </p>
+            </div>
+
+            <div class="max-w-lg mx-auto bg-white rounded-3xl shadow-2xl border border-brand-100 overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                <div class="bg-brand-500 p-8 text-white text-center relative">
+                    <span class="absolute top-4 right-4 bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        LIMITED OFFER
+                    </span>
+                    <h3 class="text-2xl font-extrabold mb-1">Layanan Unggulan Kopi Roda</h3>
+                    <p class="text-brand-50 text-sm">Solusi Kuliner & F&B / Retail Store Terbaik</p>
+                </div>
+                
+                <div class="p-8 sm:p-10">
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Akses Layanan Super Cepat</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Suasana Asri, Santai & Nyaman</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Konsultasi & Transparansi Biaya</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            <span class="text-slate-700 font-medium">Prioritas Respon via WhatsApp</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/01234567890?text=Halo%20Kopi%20Roda%2C%20saya%20ingin%20pesan%20Layanan%20Unggulan%20Kopi%20Roda" target="_blank" class="w-full py-4 rounded-2xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/30 transition-all flex items-center justify-center gap-3">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Pesan Sekarang via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+                    Pertanyaan yang Sering Diajukan (FAQ)
+                </h2>
+                <p class="text-slate-600 text-lg">
+                    Temukan jawaban cepat seputar layanan dan produk kami.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition open:bg-brand-50/20 open:border-brand-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-slate-900 cursor-pointer list-none">
+                        <span>Bagaimana cara memesan Layanan Unggulan Kopi Roda?</span>
+                        <span class="transition group-open:rotate-180">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Sangat mudah! Anda cukup mengklik tombol "Pesan Sekarang via WhatsApp" di halaman ini. Anda akan langsung terhubung dengan tim kami untuk memproses pesanan dengan cepat.
+                    </p>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition open:bg-brand-50/20 open:border-brand-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-slate-900 cursor-pointer list-none">
+                        <span>Apakah ada jaminan transparansi harga?</span>
+                        <span class="transition group-open:rotate-180">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Tentu saja. Kami menjunjung tinggi transparansi tanpa ada biaya tersembunyi. Semua rincian akan dijelaskan secara jelas sebelum Anda melakukan konfirmasi pemesanan.
+                    </p>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition open:bg-brand-50/20 open:border-brand-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-slate-900 cursor-pointer list-none">
+                        <span>Seperti apa suasana yang ditawarkan di Kopi Roda?</span>
+                        <span class="transition group-open:rotate-180">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Kami mengusung konsep Asri, Santai dan nyaman, sangat ideal bagi Anda yang ingin menikmati waktu berkualitas, bersantai, ataupun bekerja dengan tenang.
+                    </p>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition open:bg-brand-50/20 open:border-brand-200">
+                    <summary class="flex justify-between items-center font-bold text-lg text-slate-900 cursor-pointer list-none">
+                        <span>Berapa lama waktu respon setelah menghubungi WhatsApp?</span>
+                        <span class="transition group-open:rotate-180">
+                            <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </summary>
+                    <p class="text-slate-600 mt-4 leading-relaxed">
+                        Tim kami siap merespon pesan Anda dengan cepat pada jam operasional, memastikan kebutuhan Anda segera ditangani tanpa menunggu lama.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-6">
+                <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white font-bold">
+                    K
+                </div>
+                <span class="text-lg font-bold text-white">Kopi Roda</span>
+            </div>
+            <p class="text-sm text-slate-400 mb-6 max-w-md mx-auto">
+                Solusi Kuliner & F&B / Retail Store terbaik dengan suasana Asri, Santai dan nyaman untuk Anda.
+            </p>
+            <p class="text-xs text-slate-600">
+                &copy; 2026 Kopi Roda (Client: Chika). All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Sticky Floating CTA (Mobile Only) -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 block md:hidden shadow-2xl">
+        <a href="https://wa.me/01234567890?text=Halo%20Kopi%20Roda%2C%20saya%20ingin%20pesan%20Layanan%20Unggulan%20Kopi%20Roda" target="_blank" class="w-full py-3.5 px-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Pesan Sekarang via WhatsApp
+        </a>
+    </div>
+
+</body>
+</html>
