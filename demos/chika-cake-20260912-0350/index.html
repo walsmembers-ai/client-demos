@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chika Cake - Kue Jadul Autentik, Lembut & Tanpa Pengawet</title>
+    <meta name="description" content="Nikmati kelezatan Kue Jadul autentik dari Chika Cake. Dibuat fresh setiap hari, 100% tanpa pengawet dan pewarna buatan. Pesan sekarang!">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#0ec7a5',
+                            dark: '#0aa387',
+                            light: '#e6fbf7',
+                            soft: '#f0fdfc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased pb-24 lg:pb-0">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-md shadow-brand/20">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-slate-900">Chika<span class="text-brand">Cake</span></span>
+                    <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-400">Kue Jadul Autentik</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#keunggulan" class="hover:text-brand transition">Keunggulan</a>
+                <a href="#menu" class="hover:text-brand transition">Menu</a>
+                <a href="#testimoni" class="hover:text-brand transition">Testimoni</a>
+                <a href="#faq" class="hover:text-brand transition">FAQ</a>
+            </div>
+
+            <div>
+                <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" 
+                   class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-semibold text-sm shadow-lg shadow-brand/25 transition-all transform hover:-translate-y-0.5">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden bg-gradient-to-b from-brand-soft/60 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Content (A - Attention) -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-light border border-brand/20 text-brand text-xs font-bold uppercase tracking-wider mb-6 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-brand animate-pulse"></span>
+                        100% Tanpa Pengawet & Pewarna Buatan
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+                        Nikmati Kelezatan Autentik <span class="text-brand">Kue Jadul</span> Penuh Nostalgia
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Kini hadir untuk mengobati kerinduan Anda. Dibuat dari resep turun-temurun dengan bahan premium pilihan yang profesional, cepat, dan transparan tanpa rasa khawatir.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" 
+                           class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-brand hover:bg-brand-dark text-white font-bold text-base shadow-xl shadow-brand/30 transition-all transform hover:-translate-y-1">
+                            <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                            Pesan Sekarang via WhatsApp
+                        </a>
+                        <span class="text-xs font-medium text-slate-500">Respon cepat & ramah dalam hitungan detik</span>
+                    </div>
+
+                    <!-- Trust indicators -->
+                    <div class="mt-10 pt-8 border-t border-slate-200/60 grid grid-cols-3 gap-4 text-left">
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900">100%</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Halal & Higienis</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900">Fresh</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Panggang Setiap Hari</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl sm:text-3xl font-extrabold text-slate-900">4.9/5</p>
+                            <p class="text-xs text-slate-500 mt-0.5">Rating Kepuasan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image / Visual -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-brand to-emerald-200 opacity-30 blur-xl"></div>
+                        <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100">
+                            <div class="aspect-4/3 rounded-2xl overflow-hidden bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center relative">
+                                <!-- Ilustrasi kue / placeholder estetis -->
+                                <div class="absolute inset-0 bg-[radial-gradient(#d97706_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
+                                <div class="text-center p-6 relative z-10">
+                                    <div class="w-20 h-20 mx-auto mb-4 bg-white/80 backdrop-blur rounded-2xl flex items-center justify-center shadow-lg text-amber-600">
+                                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 rounded-full bg-amber-500 text-white text-xs font-bold uppercase tracking-wider mb-2">Best Seller</span>
+                                    <h3 class="text-2xl font-bold text-slate-900">Kue Jadul Spesial</h3>
+                                    <p class="text-sm text-slate-600 mt-1">Lembut, Manis Pas, & Bikin Ketagihan</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 p-4 rounded-2xl bg-brand-soft border border-brand/10 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand text-white flex items-center justify-center shrink-0">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-slate-900">Garansi Kualitas Rasa</h4>
+                                    <p class="text-xs text-slate-600">Dibuat langsung oleh baker berpengalaman.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINT AGITATION (I - Interest & Desire) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest bg-brand-light px-3 py-1 rounded-full">Sering Mengalami Masalah Ini?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                    Kecewa dengan Kue Pasaran yang Terlalu Manis dan Menggunakan Bahan Kimia?
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Banyak toko kuliner saat ini mengorbankan kualitas kesehatan demi menekan biaya produksi. Apakah Anda merasakan hal yang sama?
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Pain Card 1 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-brand/30 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-6 font-bold text-lg">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Rasa Eneg & Terlalu Manis</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Kue buatan pabrik seringkali menggunakan pemanis buatan berlebih yang meninggalkan rasa pahit dan tidak nyaman di tenggorokan.
+                    </p>
+                </div>
+
+                <!-- Pain Card 2 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-brand/30 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-6 font-bold text-lg">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Kandungan Pengawet Berbahaya</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Khawatir akan kesehatan keluarga karena produk makanan tahan berbulan-bulan yang menandakan tingginya zat pengawet kimia.
+                    </p>
+                </div>
+
+                <!-- Pain Card 3 -->
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:border-brand/30 transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center mb-6 font-bold text-lg">
+                        ✕
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Pelayanan Lambat & Tidak Jelas</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Kesulitan menemukan penyedia kuliner yang profesional, cepat tanggap, dan transparan mengenai bahan baku yang digunakan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Solution Highlight -->
+            <div class="mt-16 bg-gradient-to-r from-brand to-brand-dark rounded-3xl p-8 sm:p-12 text-white shadow-xl shadow-brand/20 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="max-w-2xl text-center lg:text-left">
+                    <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-semibold uppercase tracking-wider mb-3">Solusi Terbaik Kami</span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Kini Hadir Chika Cake: Solusi Kuliner Sehat & Autentik</h3>
+                    <p class="text-brand-light mt-2 text-sm sm:text-base">Dibuat khusus <span class="font-bold underline">Tanpa Pengawet dan Pewarna</span> buatan. Aman untuk anak-anak hingga orang dewasa.</p>
+                </div>
+                <div>
+                    <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" 
+                       class="inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-white text-brand font-bold text-base shadow-lg hover:bg-slate-100 transition-all transform hover:-translate-y-0.5">
+                        Konsultasi Pesanan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE & BENEFIT GRID -->
+    <section id="keunggulan" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest bg-brand-light px-3 py-1 rounded-full">Keunggulan Produk</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                    Mengapa Harus Memilih Chika Cake?
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Komitmen kami adalah menyajikan kualitas terbaik tanpa kompromi untuk setiap gigitan.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-light text-brand flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Tanpa Pengawet</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Diproduksi fresh setiap hari. Aman dikonsumsi seluruh anggota keluarga tanpa efek samping kimia.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-light text-brand flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 73.57V11m0 0V7m0 4h4m-4 0H7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Pewarna Alami</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Warna menarik berasal dari ekstrak bahan alami berkualitas tinggi, bebas pewarna sintetis tekstil.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-light text-brand flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Layanan Cepat</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Pemesanan praktis via WhatsApp dengan respon cepat dan estimasi pengiriman tepat waktu.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-light text-brand flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h47.476a2 2 0 012 2v7a2 2 0 01-2 2h-1.618a2 2 0 01-1.614-.82l-1.042-1.563A2 2 0 0015.385 16H8.615a2 2 0 00-1.821 1.18l-1.042 1.563A2 2 0 014.118 19H2.5a2 2 0 01-2-2v-7a2 2 0 012-2h47.476z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Transparan & Profesional</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Keterbukaan informasi komposisi bahan baku dan standar higienitas dapur yang teruji.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF / TESTIMONIALS -->
+    <section id="testimoni" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest bg-brand-light px-3 py-1 rounded-full">Testimoni Pelanggan</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                    Apa Kata Mereka yang Sudah Mencoba?
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Ribuan pelanggan dari usia 22 hingga 55 tahun telah mempercayakan kebutuhan camilan mereka pada Chika Cake.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed italic">
+                            "Kue jadul terenak yang pernah saya coba! Rasanya benar-benar membangkitkan kenangan masa kecil. Manisnya pas, teksturnya lembut, dan yang paling penting anak-anak doyan karena sehat."
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand/20 text-brand font-bold flex items-center justify-center">
+                            S
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">Ibu Siska</h4>
+                            <p class="text-xs text-slate-500">Ibu Rumah Tangga, 38 tahun</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed italic">
+                            "Sangat profesional! Pesan buat acara arisan keluarga, datang tepat waktu dan kuenya masih fresh dari oven. Tanpa pengawet jadi tenang kasih ke orang tua."
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand/20 text-brand font-bold flex items-center justify-center">
+                            R
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">Bpk. Rian</h4>
+                            <p class="text-xs text-slate-500">Karyawan Swasta, 42 tahun</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 mb-4">
+                            ★★★★★
+                        </div>
+                        <p class="text-slate-600 text-sm leading-relaxed italic">
+                            "Admin WhatsApp-nya sangat ramah dan transparan soal bahan-bahannya. Rasanya juara banget, beda sama kue jadul toko lain. Bakal jadi langganan tetap!"
+                        </p>
+                    </div>
+                    <div class="mt-8 pt-4 border-t border-slate-200 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand/20 text-brand font-bold flex items-center justify-center">
+                            D
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900">Dinda</h4>
+                            <p class="text-xs text-slate-500">Entrepreneur, 27 tahun</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING & OFFER (A - Action) -->
+    <section id="menu" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest bg-brand-light px-3 py-1 rounded-full">Penawaran Eksklusif</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                    Amankan Promo Spesial Hari Ini
+                </h2>
+                <p class="text-slate-600 mt-4 text-base sm:text-lg">
+                    Dapatkan penawaran khusus untuk pemesanan kue jadul autentik langsung melalui WhatsApp.
+                </p>
+            </div>
+
+            <div class="max-w-lg mx-auto">
+                <div class="bg-white rounded-3xl shadow-xl border-2 border-brand p-8 sm:p-10 relative overflow-hidden">
+                    <div class="absolute -right-12 -top-12 w-32 h-32 bg-brand/10 rounded-full blur-xl pointer-events-none"></div>
+                    
+                    <div class="absolute top-6 right-6">
+                        <span class="bg-brand text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Hot Promo</span>
+                    </div>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Paket Kue Jadul Spesial</h3>
+                    <p class="text-slate-500 text-sm mb-6">Pilihan terbaik untuk camilan keluarga dan acara spesial.</p>
+
+                    <div class="mb-8 p-4 rounded-2xl bg-brand-soft border border-brand/20 text-center">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-brand-dark block mb-1">Promo Penawaran Khusus</span>
+                        <span class="text-2xl sm:text-3xl font-extrabold text-slate-900">Diskon Spesial Hari Ini</span>
+                        <span class="block text-xs text-slate-500 mt-1">*Slot terbatas setiap harinya demi menjaga kualitas fresh</span>
+                    </div>
+
+                    <ul class="space-y-4 mb-8 text-sm text-slate-600">
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>100% Tanpa Pengawet & Pewarna Buatan</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Dibuat fresh langsung saat Anda pesan</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Garansi kualitas rasa autentik</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <svg class="w-5 h-5 text-brand shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>Layanan konsultasi & pemesanan cepat via WhatsApp</span>
+                        </li>
+                    </ul>
+
+                    <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" 
+                       class="w-full inline-flex items-center justify-center px-8 py-4 rounded-2xl bg-brand hover:bg-brand-dark text-white font-bold text-base shadow-xl shadow-brand/30 transition-all transform hover:-translate-y-0.5">
+                        <svg class="w-5 h-5 mr-2.5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                        </svg>
+                        Pesan Sekarang via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-brand font-bold text-xs uppercase tracking-widest bg-brand-light px-3 py-1 rounded-full">Pertanyaan Umum</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-4 tracking-tight">
+                    Hal yang Sering Ditanyakan
+                </h2>
+                <p class="text-slate-600 mt-4 text-base">
+                    Temukan informasi lengkap seputar produk dan pemesanan di Chika Cake.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden transition">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 text-lg select-none">
+                        <span>Berapa lama daya tahan Kue Jadul Chika Cake?</span>
+                        <span class="transition group-open:rotate-180 bg-white p-2 rounded-full border border-slate-200">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        Karena kami berkomitmen menggunakan <strong>100% tanpa pengawet</strong>, kue tahan hingga 3-4 hari di suhu ruangan dan hingga 7 hari jika disimpan di dalam kulkas. Kami sarankan dikonsumsi segera dalam keadaan fresh untuk rasa terbaik.
+                    </div>
+                </details>
+
+                <!-- FAQ 2 -->
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden transition">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 text-lg select-none">
+                        <span>Bagaimana cara pemesanan dan pembayarannya?</span>
+                        <span class="transition group-open:rotate-180 bg-white p-2 rounded-full border border-slate-200">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        Pemesanan sangat mudah! Cukup klik tombol WhatsApp di halaman ini. Anda akan langsung terhubung dengan admin kami untuk konfirmasi menu, jumlah pesanan, alamat pengiriman, serta metode pembayaran transfer bank atau e-wallet yang aman dan transparan.
+                    </div>
+                </details>
+
+                <!-- FAQ 3 -->
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden transition">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 text-lg select-none">
+                        <span>Apakah kue dibuat setiap hari (fresh)?</span>
+                        <span class="transition group-open:rotate-180 bg-white p-2 rounded-full border border-slate-200">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        Ya, benar! Kami menerapkan sistem made-to-order dan baking harian untuk memastikan setiap pelanggan mendapatkan kue yang masih empuk, harum, dan dalam kondisi terbaiknya.
+                    </div>
+                </details>
+
+                <!-- FAQ 4 -->
+                <details class="group bg-slate-50 rounded-2xl border border-slate-100 overflow-hidden transition">
+                    <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 text-lg select-none">
+                        <span>Apakah bisa memesan untuk acara besar atau hajatan?</span>
+                        <span class="transition group-open:rotate-180 bg-white p-2 rounded-full border border-slate-200">
+                            <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-6 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                        Tentu saja! Kami melayani pesanan khusus untuk berbagai acara seperti arisan, ulang tahun, perayaan keluarga, hingga rapat kantor. Silakan hubungi kami beberapa hari sebelumnya untuk penjadwalan yang optimal.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-md">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold tracking-tight text-white">Chika<span class="text-brand">Cake</span></span>
+                    <span class="block text-[10px] uppercase tracking-wider font-semibold text-slate-500">🛒 Kuliner & F&B / Retail Store</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-500">
+                &copy; 2026 Chika Cake. Hak Cipta Dilindungi. Dibuat dengan dedikasi untuk rasa autentik berkualitas tinggi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- STICKY FLOATING CTA (Mobile Optimized) -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-4 lg:hidden shadow-2xl">
+        <div class="flex items-center gap-3">
+            <div class="hidden sm:block">
+                <span class="text-xs text-slate-500 block">Ada Pertanyaan?</span>
+                <span class="text-xs font-bold text-slate-900">Respon Cepat 24/7</span>
+            </div>
+            <a href="https://wa.me/01234567890?text=Halo%20Chika%20Cake%2C%20saya%20ingin%20pesan%20Kue%20Jadul" 
+               class="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-brand hover:bg-brand-dark text-white font-bold text-sm shadow-lg shadow-brand/30 transition-all">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Pesan Sekarang via WhatsApp
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
